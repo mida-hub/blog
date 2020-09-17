@@ -6,15 +6,10 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-django-cors-headers = "==3.0.2"
-django-filter = "==2.2.0"
-djangorestframework = "==3.10.0"
-djangorestframework-jwt = "==1.11.0"
-pytz = "==2019.1"
-sqlparse = "==0.3.0"
+django-rest-framework = "*"
+django-environ = "*"
 Django = "==2.2.3"
-PyJWT = "==1.7.1"
-django-environ = "==0.4.5"
+django-webpack-loader = "*"
 
 [requires]
 python_version = "3.8"

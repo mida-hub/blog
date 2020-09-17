@@ -1,21 +1,29 @@
 # blog
 ```
-cf. https://nmomos.com/tips/2019/07/17/django-vuejs-1/
+cf. https://qiita.com/kawaMk4/items/89b18c608dc7dd2b946b
+cf. https://qiita.com/tomo0/items/8dc619cc271f4c69658a
 ```
 
 ## django setup
 ```
 pipenv shell
-django-admin startproject server .
+django-admin startproject config .
 pipenv install -r ./requirements.txt
-django-admin startapp app
+python manage.py migrate
+django-admin startapp backend
+// model 作成後
+python manage.py makemigrations
+python manage.py migrate
 ```
 
 ## vue setup
 ```
 npm install -g @vue/cli@3.5.1
-vue create client
-cd client
+// lint is Basic
+vue init webpack frontend
+cd frontend
+vue add vuetify
+npm install --save webpack webpack-cli
 npm install --save axios
 npm run serve
 ```
