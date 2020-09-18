@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'webpack_loader',
-    'blog',
-    'entry',
+    'blog.apps.BlogConfig',
+    'entry.apps.EntryConfig',
 ]
 
 MIDDLEWARE = [

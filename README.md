@@ -1,6 +1,9 @@
 # blog
+## cf.
 ```
-cf. https://qiita.com/citykong/items/bdd428dc50c8458dfd85
+- https://qiita.com/citykong/items/bdd428dc50c8458dfd85
+- https://qiita.com/kawaMk4/items/89b18c608dc7dd2b946b
+- https://qiita.com/ryo_mt09sp/items/574bed236f3128cf97cd
 ```
 
 ## django setup

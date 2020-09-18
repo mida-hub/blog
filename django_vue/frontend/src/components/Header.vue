@@ -1,6 +1,8 @@
 <template>
   <header>
-    <h1>Header</h1>
+    <div class="headerInner">
+      <h1 class="blog-title">とまとエンジニア日記</h1>
+    </div>
   </header>
 </template>
 
@@ -12,10 +14,7 @@
   }
 </script>
 
-<style scoped lang="sass">
-  header
-    display: flex
-    background-color: #000000
-    border-bottom: 2px solid darken(#000000, 30%)
-    color: #ffffff
+<style scoped>
+  @import '../statics/normalize.css';
+  @import '../statics/style.css';
 </style>

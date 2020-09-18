@@ -1,6 +1,9 @@
 <template>
   <footer>
-    <h1>Footer</h1>
+    <div class="footerInner">
+       <!-- <small>プロフィール</small> -->
+       <small>&copy; とまとエンジニア日記 2020</small>
+    </div>
   </footer>
 </template>
 
@@ -12,12 +15,7 @@
   }
 </script>
 
-<style scoped lang="sass">
-  footer
-    position: fixed
-    bottom: 0
-    width: 100%
-    background-color: #000000
-    border-top: 2px solid darken(#000000, 20%)
-    color: #ffffff
+<style scoped>
+  @import '../statics/normalize.css';
+  @import '../statics/style.css';
 </style>
