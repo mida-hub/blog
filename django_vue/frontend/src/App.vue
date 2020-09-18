@@ -1,8 +1,10 @@
 <template>
+<div id="app">
+  <MyHeader></MyHeader>
   <v-container fluid grid-list-md>
     <v-slide-y-transition mode="out-in">
       <v-layout row wrap align-center>
-        <v-flex v-for="(entry) in entryList">
+        <v-flex v-for="entry in entryList" v-bind:key="entry.id">
           <v-card>
             <v-card-title>
               <span class="headline">{{ entry.title }}</span>
@@ -22,11 +24,15 @@
       </v-layout>
     </v-slide-y-transition>
   </v-container>
+  <MyFooter></MyFooter>
+  </div>
 </template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <script>
 import axios from 'axios'
+import MyHeader from '@/components/Header'
+import MyFooter from '@/components/Footer'
 
 export default {
   data () {
@@ -45,6 +51,10 @@ export default {
       .catch((error) => {
         console.log(error)
       })
+  },
+  components: {
+    MyHeader,
+    MyFooter
   }
 }
 </script>
