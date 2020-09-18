@@ -28,7 +28,7 @@ npm run build
 
 ## vue setup2
 ```
-npm install --save axios
 vue add vuetify
+npm install --save axios
 npm run serve
 ```
