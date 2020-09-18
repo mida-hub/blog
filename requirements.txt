@@ -1,4 +1,4 @@
-Django==2.2.3
-django-rest-framework
+Django==2.2.6
+djangorestframework==3.11.0
+django-webpack-loader==0.7.0
 django-environ
-django-webpack-loader

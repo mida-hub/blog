@@ -1,43 +1,34 @@
 # blog
 ```
-cf. https://qiita.com/kawaMk4/items/89b18c608dc7dd2b946b
-cf. https://qiita.com/tomo0/items/8dc619cc271f4c69658a
+cf. https://qiita.com/citykong/items/bdd428dc50c8458dfd85
 ```
 
 ## django setup
 ```
 pipenv shell
-django-admin startproject config .
 pipenv install -r ./requirements.txt
+mkdir django_vue
+cd django_vue
+django-admin startproject config .
 python manage.py migrate
-django-admin startapp backend
-// model 作成後
-python manage.py makemigrations
-python manage.py migrate
+django-admin startapp blog
+python manage.py runserver
 ```
 
 ## vue setup
 ```
-npm install -g @vue/cli@3.5.1
+npm install -g @vue/cli@4.4.6
 // lint is Basic
-vue init webpack frontend
+vue create frontend
 cd frontend
-vue add vuetify
-npm install --save webpack webpack-cli
+npm install --save-dev webpack-bundle-tracker@0.4.3
+touch vue.config.js
+npm run build
+```
+
+## vue setup2
+```
 npm install --save axios
+vue add vuetify
 npm run serve
-```
-![vue01](setup_img/vue01.png)
-![vue02](setup_img/vue02.png)
-
-## django setup2
-```
-cd ..
-python manage.py runserver
-```
-
-## backend implementation
-```
-python manage.py migrate
-python manage.py createsuperuser
 ```
