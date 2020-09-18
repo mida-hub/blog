@@ -9,8 +9,6 @@
 <script>
 import Header from '@/components/Header'
 import Main from '@/components/Main'
-// import Category from '@/components/Category'
-// import Tag from '@/components/Tag'
 import Footer from '@/components/Footer'
 
 export default {

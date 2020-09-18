@@ -1,22 +1,25 @@
 <template>
   <v-container fluid grid-list-md>
     <v-slide-y-transition mode="out-in">
-      <v-layout row wrap align-center>
-        <v-flex v-for="entry in entryList" v-bind:key="entry.id">
-          <v-card>
+      <v-layout column wrap align-center>
+        <v-flex v-for="post in postList" v-bind:key="post.id">
+          <v-card outlined>
             <v-card-title>
-              <span class="headline">{{ entry.title }}</span>
+              <span class="headline">{{ post.title }}</span>
             </v-card-title>
             <v-card-text>
-              <blockquote>
-                {{ entry.contnt }}
-                <footer>
-                  <small>
-                    <em>&mdash;{{ entry.date }}</em>
-                  </small>
-                </footer>
-              </blockquote>
+              {{ post.content }}
             </v-card-text>
+            <v-card-subtitle>
+              <small>
+                <em>{{ post.updated_at }}</em>
+              </small>
+            </v-card-subtitle>
+            <v-card-subtitle>
+              <v-chip v-for="tag in post.tags" v-bind:key="tag">
+                {{ tag }}
+              </v-chip>
+            </v-card-subtitle>
           </v-card>
         </v-flex>
       </v-layout>
@@ -30,16 +33,14 @@
   export default {
     data () {
       return {
-        entryList: []
+        postList: []
       }
     },
     mounted: function () {
       console.log('mounted')
-      // APIを叩く。
-      // 開発サーバで動作中はちゃんとDjangoの8000番ポートを叩いてくれます。
-      axios.get('/api/entries/')
+      axios.get('/blog/posts/')
         .then((response) => {
-          this.entryList = response.data
+          this.postList = response.data
         })
         .catch((error) => {
           console.log(error)

@@ -1,20 +1,11 @@
 <template>
-  <v-container fluid>
-    <v-layout column>
-      <v-card outlined color="white">
-        <div class="headline">
-          <v-card-title>
-            タグ
-          </v-card-title>
-        </div>
-        <div v-for="tag in tagList" v-bind:key="tag.id">
-          <v-card-text>
-            {{ tag.name }}
-          </v-card-text>
-        </div>
-      </v-card>
-    </v-layout>
-  </v-container>
+  <v-chip-group>
+    <v-card-text>
+      <v-chip v-for="tag in tagList" v-bind:key="tag.id">
+        {{ tag.name }}
+      </v-chip>
+    </v-card-text>
+  </v-chip-group>
 </template>
 
 <script>

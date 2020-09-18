@@ -1,20 +1,11 @@
 <template>
-  <v-container fluid>
-    <v-layout column>
-      <v-card outlined color="white">
-        <div class="headline">
-          <v-card-title>
-            カテゴリ
-          </v-card-title>
-        </div>
-        <div v-for="category in categoryList" v-bind:key="category.id">
-          <v-card-text>
-            {{ category.name }}
-          </v-card-text>
-        </div>
-      </v-card>
-    </v-layout>
-  </v-container>
+  <v-chip-group>
+    <v-card-text>
+      <v-chip v-for="category in categoryList" v-bind:key="category.id">
+        {{ category.name }}
+      </v-chip>
+    </v-card-text>
+  </v-chip-group>
 </template>
 
 <script>

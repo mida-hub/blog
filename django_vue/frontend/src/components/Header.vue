@@ -1,9 +1,20 @@
 <template>
-  <header>
-    <div class="headerInner">
-      <h1 class="blog-title">とまとエンジニア日記</h1>
-    </div>
-  </header>
+  <v-container fluid grid-list-md>
+    <v-row style="height: 30px;" dense>
+      <v-col dense>
+        <div class="blog-wapper">
+          <h1 class="blog-title">
+            とまとエンジニア日記
+            <v-img
+              width="35"
+              style="float:left;"
+              v-bind:src="require('@/assets/tomato.jpg')"
+            ></v-img>
+          </h1>
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
