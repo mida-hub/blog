@@ -15,8 +15,6 @@ export default {
   components: {
     Header,
     Main,
-    // Category,
-    // Tag,
     Footer
   }
 }

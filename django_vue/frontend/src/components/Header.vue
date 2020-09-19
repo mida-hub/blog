@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid grid-list-md>
+  <v-container fluid>
     <v-row style="height: 30px;" dense>
       <v-col dense>
         <div class="blog-wapper">

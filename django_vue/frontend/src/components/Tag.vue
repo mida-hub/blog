@@ -1,5 +1,5 @@
 <template>
-  <v-chip-group>
+  <v-chip-group column>
     <v-card-text>
       <v-chip v-for="tag in tagList" v-bind:key="tag.id">
         {{ tag.name }}

@@ -1,10 +1,6 @@
 <template>
-  <v-container fluid grid-list-md>
-    <v-row
-      justify="center"
-      align-content="center"
-      style="height: 50px;"
-    >
+  <v-container fluid>
+    <v-row style="height: 80px;">
       <v-col>
       </v-col>
       <v-col cols="8">
@@ -13,10 +9,7 @@
       <v-col>
       </v-col>
     </v-row>
-    <v-row
-      justify="center"
-      align-content="center"
-    >
+    <v-row>
       <v-col>
       </v-col>
       <v-col cols="8">
