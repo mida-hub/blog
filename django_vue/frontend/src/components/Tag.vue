@@ -18,7 +18,7 @@
       }
     },
     mounted: function () {
-      console.log('mounted')
+      console.log('tag mounted')
       axios.get('/blog/tags/')
         .then((response) => {
           this.tagList = response.data

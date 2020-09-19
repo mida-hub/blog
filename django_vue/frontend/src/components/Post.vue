@@ -11,13 +11,11 @@
           </v-card-text>
           <v-card-subtitle>
             <p>
-              <small v-for="tag in post.tags" v-bind:key="tag">
-                {{ tag }}
-              </small>
-            </p>
-            <p>
               <small>
                 {{ post.published_at | moment('YYYY-MM-DD HH:mm') }}
+              </small>
+              <small v-for="tag in post.tags" v-bind:key="tag">
+                {{ tag }}
               </small>
             </p>
           </v-card-subtitle>
@@ -39,7 +37,7 @@
       }
     },
     mounted: function () {
-      console.log('mounted')
+      console.log('post mounted')
       axios.get('/blog/posts/')
         .then((response) => {
           this.postList = response.data
@@ -75,6 +73,11 @@
       moment(value, format) {
         return moment(value).format(format);
       },
+      /**
+       * 記事一覧で表示する見出しコンテンツ
+       * 一定以上の文字列長の場合は切り出す
+       * @param {string} content - 記事のコンテンツ
+       */
       summaryContent(content) {
         const cutLength = 80
         if (content.length <= cutLength) {
