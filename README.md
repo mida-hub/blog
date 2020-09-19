@@ -64,5 +64,6 @@ npm run build
 ```
 vue add vuetify
 npm install --save axios
+npm install --save moment
 npm run serve
 ```
