@@ -32,7 +32,7 @@ class Post(models.Model):
     is_public = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['-published_at']
 
     def save(self, *args, **kwargs):
         if self.is_public and not self.published_at:
