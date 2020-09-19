@@ -7,7 +7,7 @@
             <span class="headline">{{ post.title }}</span>
           </v-card-title>
           <v-card-text>
-            {{ post.content }}
+            {{ post.content | summaryContent }}
           </v-card-text>
           <v-card-subtitle>
             <p>
@@ -75,7 +75,14 @@
       moment(value, format) {
         return moment(value).format(format);
       },
-
+      summaryContent(content) {
+        const cutLength = 80
+        if (content.length <= cutLength) {
+          return content
+        } else {
+          return content.substring(cutLength, -1).concat('...')
+        }
+      },
     }
   }
 </script>
