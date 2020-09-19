@@ -26,6 +26,14 @@
 </script>
 
 <style scoped>
-  @import '../statics/normalize.css';
-  @import '../statics/style.css';
+  .blog-title{
+    text-align: center;
+    margin: 10px;
+  }
+
+  .blog-wapper{
+    display: flex;
+    justify-content: center; 
+  }
+
 </style>

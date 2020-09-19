@@ -18,6 +18,4 @@
 </script>
 
 <style scoped>
-  @import '../statics/normalize.css';
-  @import '../statics/style.css';
 </style>
