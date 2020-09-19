@@ -15,7 +15,7 @@
                 {{ post.published_at | moment('YYYY-MM-DD HH:mm') }}
               </small>
               <small v-for="tag in post.tags" v-bind:key="tag">
-                {{ tag }}
+                {{ getTagName(tag, tagList) }}
               </small>
             </p>
           </v-card-subtitle>
@@ -33,10 +33,19 @@
   export default {
     data () {
       return {
-        postList: []
+        postList: [],
+        tagList: []
       }
     },
     mounted: function () {
+      console.log('post-tag mounted')
+      axios.get('/blog/tags/')
+        .then((response) => {
+          this.tagList = response.data
+        })
+        .catch((error) => {
+          console.log(error)
+        })
       console.log('post mounted')
       axios.get('/blog/posts/')
         .then((response) => {
@@ -63,6 +72,17 @@
             return false
           }
         }
+      },
+      /**
+       * タグIDからタグ名に変換する
+       * @param {int} tag        - タグID
+       * @param [{json}] tagList - タグ一覧 [json]
+       */
+      getTagName: function () {
+        return function (tag, tagList) {
+          const tagItem = tagList.find((item) => item.id === tag)
+          return '[' + tagItem.name + ']'
+        }
       }
     },
     filters: {
@@ -70,7 +90,7 @@
        * @param {Date} value    - Date オブジェクト
        * @param {string} format - 変換したいフォーマット
        */
-      moment(value, format) {
+      moment (value, format) {
         return moment(value).format(format);
       },
       /**
@@ -78,14 +98,14 @@
        * 一定以上の文字列長の場合は切り出す
        * @param {string} content - 記事のコンテンツ
        */
-      summaryContent(content) {
+      summaryContent: function (content) {
         const cutLength = 80
         if (content.length <= cutLength) {
           return content
         } else {
-          return content.substring(cutLength, -1).concat('...')
+          return content.substring(cutLength, -1).concat('......')
         }
-      },
+      }
     }
   }
 </script>
