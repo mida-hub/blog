@@ -1,7 +1,6 @@
 <template>
   <v-container fluid>
     <div v-for="post in postList" v-bind:key="post.id">
-      <!-- is_public && published_at <= current_at -->
       <div v-if="isPublic(post.is_public, post.published_at)">
         <v-row>
           <v-card-title>
@@ -50,11 +49,16 @@
         })
     },
     computed: {
+      /**
+       * 公開フラグ & 公開日付が現在日付より過去になった場合に表示する
+       * @param {bool} is_public    - 公開フラグ
+       * @param {Date} published_at - 公開日付
+       */
       isPublic: function () {
         return function (is_public, published_at) {
           const formated_published_at = moment(published_at, 'YYYY-MM-DD HH:mm')
           const formated_current_at = moment(new Date(), 'YYYY-MM-DD HH:mm')
-          // is_public かつ published_at が現在日付より前の場合に表示する
+          
           if (is_public && formated_published_at <= formated_current_at) {
             return true
           } else {
@@ -71,6 +75,7 @@
       moment(value, format) {
         return moment(value).format(format);
       },
+
     }
   }
 </script>
