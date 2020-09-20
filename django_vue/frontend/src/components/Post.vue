@@ -1,5 +1,11 @@
 <template>
   <v-container fluid>
+                <router-link
+              style="text-decoration: none; color: inherit;"
+              to="/category"
+            >
+              category
+            </router-link>
     <div v-for="post in postList" v-bind:key="post.id">
       <div v-if="isPublic(post.is_public, post.published_at)">
         <v-row>
@@ -37,7 +43,7 @@
         tagList: []
       }
     },
-    mounted: function () {
+    created: function () {
       console.log('post-tag mounted')
       axios.get('/blog/tags/')
         .then((response) => {

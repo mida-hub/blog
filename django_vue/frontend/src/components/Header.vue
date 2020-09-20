@@ -4,7 +4,12 @@
       <v-col>
         <div class="blog-title-wapper">
           <h1 class="blog-title-name">
-            とまとエンジニア日記
+            <router-link
+              style="text-decoration: none; color: inherit;"
+              to="/"
+            >
+              とまとエンジニア日記
+            </router-link>
             <v-img class="blog-title-img"
               v-bind:src="require('@/assets/tomato.jpg')"
             ></v-img>

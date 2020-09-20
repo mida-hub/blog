@@ -18,7 +18,7 @@
       }
     },
     mounted: function () {
-      console.log('mounted')
+      console.log('category mounted')
       axios.get('/blog/categories/')
         .then((response) => {
           this.categoryList = response.data
