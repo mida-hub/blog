@@ -2,9 +2,9 @@
   <v-container fluid>
                 <router-link
               style="text-decoration: none; color: inherit;"
-              to="/category"
+              to="/post"
             >
-              category
+              post
             </router-link>
     <div v-for="post in postList" v-bind:key="post.id">
       <div v-if="isPublic(post.is_public, post.published_at)">

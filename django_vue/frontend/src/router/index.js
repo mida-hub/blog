@@ -14,9 +14,13 @@ const routes = [
     component: loadView('Main')
   },
   {
-    path: '/category',
-    name: 'category',
-    component: loadView('PostDetail')
+    path: '/post',
+    name: 'post',
+    component: loadView('MainDetail')
+  },
+  {
+    path: '*',
+    component: loadView('Main')
   }
 ]
 

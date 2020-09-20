@@ -4,7 +4,7 @@
       <v-col>
       </v-col>
       <v-col cols="8">
-        <Category></Category>
+        <PostDetail></PostDetail>
       </v-col>
       <v-col>
       </v-col>
@@ -13,11 +13,11 @@
 </template>
 
 <script>
-  import Category from '@/components/Category'
+  import PostDetail from '@/components/PostDetail'
 
   export default {
     components: {
-      Category
+      PostDetail
     }
   }
 </script>
