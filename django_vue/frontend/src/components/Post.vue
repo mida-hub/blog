@@ -15,7 +15,7 @@
                 {{ post.published_at | moment('YYYY-MM-DD HH:mm') }}
               </small>
               <small v-for="tag in post.tags" v-bind:key="tag">
-                {{ getTagName(tag, tagList) }}
+                [{{ getTagName(tag, tagList) }}]
               </small>
             </p>
           </v-card-subtitle>
@@ -81,7 +81,7 @@
       getTagName: function () {
         return function (tag, tagList) {
           const tagItem = tagList.find((item) => item.id === tag)
-          return '[' + tagItem.name + ']'
+          return tagItem.name
         }
       }
     },

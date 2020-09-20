@@ -1,13 +1,11 @@
 <template>
   <v-container fluid>
-    <v-row style="height: 30px;" dense>
-      <v-col dense>
-        <div class="blog-wapper">
-          <h1 class="blog-title">
+    <v-row class="blog-title-row">
+      <v-col>
+        <div class="blog-title-wapper">
+          <h1 class="blog-title-name">
             とまとエンジニア日記
-            <v-img
-              width="35"
-              style="float:left;"
+            <v-img class="blog-title-img"
               v-bind:src="require('@/assets/tomato.jpg')"
             ></v-img>
           </h1>
@@ -26,14 +24,22 @@
 </script>
 
 <style scoped>
-  .blog-title{
-    text-align: center;
-    margin: 10px;
+  .blog-title-row{
+    height: 30px;
   }
 
-  .blog-wapper{
+  .blog-title-wapper{
     display: flex;
     justify-content: center; 
   }
 
+  .blog-title-name{
+    text-align: center;
+    margin: 10px;
+  }
+
+  .blog-title-img{
+    float: left;
+    width: 35px;
+  }
 </style>
