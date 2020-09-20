@@ -3,7 +3,7 @@
     absolute
     class="font-weight-medium"
   >
-    <v-col style="text-align: center;">
+    <v-col class="blog-footer">
       <small>&copy; とまとエンジニア日記 {{ new Date().getFullYear() }}</small>
     </v-col>
   </v-footer>
@@ -18,4 +18,7 @@
 </script>
 
 <style scoped>
+  .blog-footer{
+    text-align: center;
+  }
 </style>
