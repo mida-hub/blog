@@ -14,7 +14,7 @@ const routes = [
     component: loadView('Main')
   },
   {
-    path: '/post/:postId',
+    path: '/posts/:postId',
     name: 'postDetail',
     component: loadView('MainDetail')
   },

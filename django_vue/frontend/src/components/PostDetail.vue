@@ -2,6 +2,11 @@
   <v-container fluid>
     <v-row>
       <v-card outlined width="100%">
+        <div v-if="isError">
+          <v-card-title>
+            /posts/{{ this.$route.params.postId }} is not exist.
+          </v-card-title>
+        </div>
         <v-card-title>
           <span class="headline">{{ postDetail.title }}</span>
         </v-card-title>
@@ -31,7 +36,8 @@
   export default {
     data () {
       return {
-        postDetail: []
+        postDetail: [],
+        isError: false
       }
     },
     created: function () {
@@ -43,6 +49,11 @@
         })
         .catch((error) => {
           console.log(error)
+          this.isError = true
+          // 不正なアクセスのため1秒後にリダイレクト
+          setTimeout(function () {
+            location.href = '/'
+          }, 1000);
         })
     },
   }
