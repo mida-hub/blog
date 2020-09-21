@@ -36,11 +36,10 @@
     },
     created: function () {
       console.log('post mounted')
-      axios.get('/blog/posts/')
+      const postId = this.$route.params.postId
+      axios.get('/blog-api/post/' + postId)
         .then((response) => {
-          const postList = response.data
-          console.log(postList[0])
-          this.postDetail = postList[0]
+          this.postDetail = response.data
         })
         .catch((error) => {
           console.log(error)

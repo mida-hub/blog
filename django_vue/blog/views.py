@@ -20,3 +20,9 @@ class PostListAPIView(generics.ListAPIView):
     permission_classes = (AllowAny,)
     serializer_class = PostSerializer
     queryset = Post.objects.all()
+
+
+class PostDetailAPIView(generics.RetrieveAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = PostSerializer
+    queryset = Post.objects.all()

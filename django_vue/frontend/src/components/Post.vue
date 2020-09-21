@@ -1,16 +1,18 @@
 <template>
   <v-container fluid>
-                <router-link
-              style="text-decoration: none; color: inherit;"
-              to="/post"
-            >
-              post
-            </router-link>
     <div v-for="post in postList" v-bind:key="post.id">
       <div v-if="isPublic(post.is_public, post.published_at)">
         <v-row>
           <v-card-title>
-            <span class="headline">{{ post.title }}</span>
+            <span class="headline">
+              <router-link
+                style="text-decoration: none; color: inherit;"
+                v-bind:to="{name: 'postDetail', params: {postId: post.id}}"
+                class="post-link-hover"
+              >
+                {{ post.title }}  
+              </router-link>
+            </span>
           </v-card-title>
           <v-card-text>
             {{ post.content | summaryContent }}
@@ -45,7 +47,7 @@
     },
     created: function () {
       console.log('post-tag mounted')
-      axios.get('/blog/tags/')
+      axios.get('/blog-api/tags/')
         .then((response) => {
           this.tagList = response.data
         })
@@ -53,7 +55,7 @@
           console.log(error)
         })
       console.log('post mounted')
-      axios.get('/blog/posts/')
+      axios.get('/blog-api/posts/')
         .then((response) => {
           this.postList = response.data
         })
