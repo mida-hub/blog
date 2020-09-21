@@ -6,9 +6,8 @@
           <v-card-title>
             <span class="headline">
               <router-link
-                style="text-decoration: none; color: inherit;"
                 v-bind:to="{name: 'postDetail', params: {postId: post.id}}"
-                class="post-link-hover"
+                class="post-link"
               >
                 {{ post.title }}  
               </router-link>
@@ -119,4 +118,12 @@
 </script>
 
 <style scoped>
+  .post-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  .post-link:hover{
+    padding-bottom: 3px;
+    border-bottom: 1px solid;
+  }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-card outlined>
+      <v-card outlined width="100%">
         <v-card-title>
           <span class="headline">{{ postDetail.title }}</span>
         </v-card-title>
