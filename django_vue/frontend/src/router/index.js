@@ -20,6 +20,7 @@ const routes = [
   },
   {
     path: '*',
+    redirect: '/',
     component: loadView('Main')
   }
 ]
