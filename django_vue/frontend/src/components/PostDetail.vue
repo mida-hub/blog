@@ -1,28 +1,27 @@
 <template>
   <v-container fluid>
+    <v-row>
       <v-card outlined>
         <v-card-title>
           <span class="headline">{{ postDetail.title }}</span>
         </v-card-title>
-        <v-card-subtitle>
-          <v-row>
-            <v-col>
-              <small v-for="tag in postDetail.tags" v-bind:key="tag">
-                [{{ tag }}]
-              </small>
-            </v-col>
-            <v-col class="detail-right">
-              <small>
-                {{ postDetail.published_at }}
-              </small>
-            </v-col>
-          </v-row>
+        <v-card-subtitle style="color: rgba(0, 0, 0, 0.87);">
+          <p>
+            <small>
+              {{ postDetail.published_at }}
+            </small>
+          </p>
+        <p>
+          <small v-for="tag in postDetail.tags" v-bind:key="tag">
+            [{{ tag }}]
+          </small>
+        </p>
         </v-card-subtitle>
-        
-        <v-card-text>
+        <v-card-text style="color: rgba(0, 0, 0, 0.87);">
           {{ postDetail.content }}
         </v-card-text>
       </v-card>
+    </v-row>
   </v-container>
 </template>
 
