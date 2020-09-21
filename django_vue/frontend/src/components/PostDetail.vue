@@ -37,7 +37,7 @@
     created: function () {
       console.log('post mounted')
       const postId = this.$route.params.postId
-      axios.get('/blog-api/post/' + postId)
+      axios.get('/blog-api/posts/' + postId)
         .then((response) => {
           this.postDetail = response.data
         })
