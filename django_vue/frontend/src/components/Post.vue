@@ -14,7 +14,7 @@
             </span>
           </v-card-title>
           <v-card-text>
-            {{ post.summarized_content }}
+            <span v-html="post.summarized_content"></span>
           </v-card-text>
           <v-card-subtitle>
             <p>

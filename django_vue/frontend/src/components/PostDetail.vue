@@ -23,7 +23,7 @@
         </p>
         </v-card-subtitle>
         <v-card-text style="color: rgba(0, 0, 0, 0.87);">
-          {{ postDetail.decoded_content }}
+          <span v-html="postDetail.decoded_content"></span>
         </v-card-text>
       </v-card>
     </v-row>
