@@ -1,12 +1,14 @@
 <template>
-  <v-footer
-    absolute
-    class="font-weight-medium"
-  >
-    <v-col class="blog-footer">
-      <small>&copy; とまとエンジニア日記 {{ new Date().getFullYear() }}</small>
-    </v-col>
-  </v-footer>
+  <v-card height="40">
+    <v-footer
+      absolute
+      class="grey lighten-2"
+    >
+      <v-col class="blog-footer">
+        <small>&copy; とまとエンジニア日記 {{ new Date().getFullYear() }}</small>
+      </v-col>
+    </v-footer>
+  </v-card>
 </template>
 
 <script>
