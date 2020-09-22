@@ -17,11 +17,6 @@ const routes = [
     path: '/posts/:postId',
     name: 'postDetail',
     component: loadView('MainDetail')
-  },
-  {
-    path: '*',
-    redirect: '/',
-    component: loadView('Main')
   }
 ]
 

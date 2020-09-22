@@ -3,4 +3,4 @@ djangorestframework==3.11.0
 django-webpack-loader==0.7.0
 django-markdownx==3.0.1
 django-environ
-
+pendulum

@@ -14,14 +14,14 @@
             </span>
           </v-card-title>
           <v-card-text>
-            {{ post.content | summaryContent }}
+            {{ post.summarized_content }}
           </v-card-text>
           <v-card-subtitle>
             <p>
               <small>
-                {{ post.published_at | moment('YYYY-MM-DD HH:mm') }}
+                {{ post.formatted_published_at }}
               </small>
-              <small v-for="tag in post.tags" v-bind:key="tag">
+              <small v-for="tag in post.tags" v-bind:key="tag.id">
                 [{{ tag.name }}]
               </small>
             </p>
@@ -69,28 +69,6 @@
           } else {
             return false
           }
-        }
-      },
-    },
-    filters: {
-      /**
-       * @param {Date} value    - Date オブジェクト
-       * @param {string} format - 変換したいフォーマット
-       */
-      moment (value, format) {
-        return moment(value).format(format);
-      },
-      /**
-       * 記事一覧で表示する見出しコンテンツ
-       * 一定以上の文字列長の場合は切り出す
-       * @param {string} content - 記事のコンテンツ
-       */
-      summaryContent: function (content) {
-        const cutLength = 80
-        if (content.length <= cutLength) {
-          return content
-        } else {
-          return content.substring(cutLength, -1).concat('......')
         }
       }
     }

@@ -13,12 +13,12 @@
         <v-card-subtitle style="color: rgba(0, 0, 0, 0.87);">
           <p>
             <small>
-              {{ postDetail.published_at }}
+              {{ postDetail.formatted_published_at }}
             </small>
           </p>
         <p>
           <small v-for="tag in postDetail.tags" v-bind:key="tag">
-            [{{ tag }}]
+            [{{ tag.name }}]
           </small>
         </p>
         </v-card-subtitle>

@@ -36,9 +36,6 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-published_at']
-    
-    def get_content_markdownx(self):
-        return mark_safe(markdownify(self.content))
 
     def save(self, *args, **kwargs):
         if self.is_public and not self.published_at:
