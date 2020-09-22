@@ -10,6 +10,7 @@ django-environ = "*"
 Django = "==2.2.6"
 django-webpack-loader = "*"
 djangorestframework = "==3.11.0"
+django-markdownx = "*"
 
 [requires]
 python_version = "3.8"

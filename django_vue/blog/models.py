@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
-
+from markdownx.models import MarkdownxField
+from django.utils.safestring import mark_safe
+from markdownx.utils import markdownify
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -24,7 +26,8 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag, blank=True)
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    # content = models.TextField()
+    content = MarkdownxField()
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -33,6 +36,9 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-published_at']
+    
+    def get_content_markdownx(self):
+        return mark_safe(markdownify(self.content))
 
     def save(self, *args, **kwargs):
         if self.is_public and not self.published_at:

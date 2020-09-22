@@ -16,6 +16,7 @@ django-admin startproject config .
 python manage.py migrate
 django-admin startapp blog
 python manage.py createsuperuser
+python manage.py collectstatic
 python manage.py runserver
 ```
 

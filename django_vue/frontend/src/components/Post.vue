@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <div v-for="post in postList" v-bind:key="post.id">
-      <div v-if="isPublic(post.is_public, post.published_at)">
+      <div v-if="isDisplay(post.is_public, post.published_at)">
         <v-row>
           <v-card-title>
             <span class="headline">
@@ -22,7 +22,7 @@
                 {{ post.published_at | moment('YYYY-MM-DD HH:mm') }}
               </small>
               <small v-for="tag in post.tags" v-bind:key="tag">
-                [{{ getTagName(tag, tagList) }}]
+                [{{ tag.name }}]
               </small>
             </p>
           </v-card-subtitle>
@@ -40,19 +40,10 @@
   export default {
     data () {
       return {
-        postList: [],
-        tagList: []
+        postList: []
       }
     },
     created: function () {
-      console.log('post-tag mounted')
-      axios.get('/blog-api/tags/')
-        .then((response) => {
-          this.tagList = response.data
-        })
-        .catch((error) => {
-          console.log(error)
-        })
       console.log('post mounted')
       axios.get('/blog-api/posts/')
         .then((response) => {
@@ -68,7 +59,7 @@
        * @param {bool} is_public    - 公開フラグ
        * @param {Date} published_at - 公開日付
        */
-      isPublic: function () {
+      isDisplay: function () {
         return function (is_public, published_at) {
           const formated_published_at = moment(published_at, 'YYYY-MM-DD HH:mm')
           const formated_current_at = moment(new Date(), 'YYYY-MM-DD HH:mm')
@@ -80,17 +71,6 @@
           }
         }
       },
-      /**
-       * タグIDからタグ名に変換する
-       * @param {int} tag        - タグID
-       * @param [{json}] tagList - タグ一覧 [json]
-       */
-      getTagName: function () {
-        return function (tag, tagList) {
-          const tagItem = tagList.find((item) => item.id === tag)
-          return tagItem.name
-        }
-      }
     },
     filters: {
       /**
@@ -125,5 +105,6 @@
   .post-link:hover{
     padding-bottom: 3px;
     border-bottom: 1px solid;
+    color: dimgray;
   }
 </style>
