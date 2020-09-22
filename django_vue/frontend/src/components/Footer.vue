@@ -1,5 +1,5 @@
 <template>
-  <v-card height="40">
+  <v-card height="56" outlined>
     <v-footer
       absolute
       class="grey lighten-2"
