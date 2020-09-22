@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <div v-for="post in postList" v-bind:key="post.id">
-      <div v-if="isDisplay(post.is_public, post.published_at)">
+      <div v-if="post.is_display">
         <v-row>
           <v-card-title>
             <span class="headline">
@@ -35,7 +35,6 @@
 
 <script>
   import axios from 'axios'
-  import moment from "moment"
 
   export default {
     data () {
@@ -52,25 +51,6 @@
         .catch((error) => {
           console.log(error)
         })
-    },
-    computed: {
-      /**
-       * 公開フラグ & 公開日付が現在日付より過去になった場合に表示する
-       * @param {bool} is_public    - 公開フラグ
-       * @param {Date} published_at - 公開日付
-       */
-      isDisplay: function () {
-        return function (is_public, published_at) {
-          const formated_published_at = moment(published_at, 'YYYY-MM-DD HH:mm')
-          const formated_current_at = moment(new Date(), 'YYYY-MM-DD HH:mm')
-          
-          if (is_public && formated_published_at <= formated_current_at) {
-            return true
-          } else {
-            return false
-          }
-        }
-      }
     }
   }
 </script>

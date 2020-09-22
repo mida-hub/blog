@@ -1,7 +1,7 @@
 from rest_framework import generics
 from rest_framework.permissions import AllowAny
 from .models import Category, Tag, Post
-from .serializers import CategorySerializer, TagSerializer, PostSerializer
+from .serializers import CategorySerializer, TagSerializer, PostSerializer, PostDetailSerializer
 
 
 class TagListAPIView(generics.ListAPIView):
@@ -24,5 +24,5 @@ class PostListAPIView(generics.ListAPIView):
 
 class PostDetailAPIView(generics.RetrieveAPIView):
     permission_classes = (AllowAny,)
-    serializer_class = PostSerializer
+    serializer_class = PostDetailSerializer
     queryset = Post.objects.all()
