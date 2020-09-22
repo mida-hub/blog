@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Category, Tag, Post
-
+from django.utils.safestring import mark_safe
+from markdownx.utils import markdownify
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
@@ -36,17 +37,20 @@ class PostSerializer(serializers.ModelSerializer):
         tz = pendulum.timezone('Asia/Tokyo')
         return tz.convert(obj.published_at).strftime('%Y-%m-%d %H:%M')
 
+    def get_text_markdownx(self, text):
+        return mark_safe(markdownify(text))
+
     """
-        ブログの最初の数行部分を概要して出す
+        コンテンツの最初の数行部分を概要して出す
         ToDo:一旦80文字にしているが特定のタグが最初に出てくる部分まで取るようにする
     """
     def get_summarized_content(self, obj):
-        cutLength = 80
+        cut_length = 80
         summarized_content = obj.content
-        if len(summarized_content) > cutLength:
-            summarized_content = summarized_content[:cutLength]
+        if len(summarized_content) > cut_length:
+            summarized_content = summarized_content[:cut_length]
             summarized_content += '......'
-        return summarized_content
+        return self.get_text_markdownx(summarized_content)
 
     """
         公開フラグ & 公開日付が現在日付より過去になった場合に表示する
@@ -78,6 +82,14 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 class PostDetailSerializer(PostSerializer):
+    decoded_content = serializers.SerializerMethodField('get_decoded_content')
+
+    """
+        Markdown コンテンツを HTML にデコード
+    """
+    def get_decoded_content(self, obj):
+        return self.get_text_markdownx(obj.content)
+
     class Meta:
         model = Post
         depth = 1
@@ -85,7 +97,7 @@ class PostDetailSerializer(PostSerializer):
             'id',
             'tags',
             'title',
-            'content',
+            'decoded_content',
             'formatted_published_at',
             'is_public',
             'is_display'

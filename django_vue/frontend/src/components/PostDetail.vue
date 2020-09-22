@@ -17,13 +17,13 @@
             </small>
           </p>
         <p>
-          <small v-for="tag in postDetail.tags" v-bind:key="tag">
+          <small v-for="tag in postDetail.tags" v-bind:key="tag.id">
             [{{ tag.name }}]
           </small>
         </p>
         </v-card-subtitle>
         <v-card-text style="color: rgba(0, 0, 0, 0.87);">
-          {{ postDetail.content }}
+          {{ postDetail.decoded_content }}
         </v-card-text>
       </v-card>
     </v-row>
