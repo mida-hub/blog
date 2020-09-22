@@ -42,15 +42,23 @@ class PostSerializer(serializers.ModelSerializer):
 
     """
         コンテンツの最初の数行部分を概要して出す
-        ToDo:一旦80文字にしているが特定のタグが最初に出てくる部分まで取るようにする
+        最初に出てくる<h1>タグまでを取得する
+        出てこなければ80文字分を返す
     """
     def get_summarized_content(self, obj):
-        cut_length = 80
-        summarized_content = obj.content
-        if len(summarized_content) > cut_length:
-            summarized_content = summarized_content[:cut_length]
-            summarized_content += '......'
-        return self.get_text_markdownx(summarized_content)
+        import re        
+        decoded_content = self.get_text_markdownx(obj.content)
+        match_result = re.match('^(.*?)<h1>', decoded_content, re.S)
+
+        if match_result:
+            return match_result[0][:-4]
+        else:
+            cutLength = 80
+            if len(decoded_content) > cutLength:
+                decoded_content = decoded_content[:cutLength]
+                decoded_content += '......'
+                return decoded_content
+            return decoded_content
 
     """
         公開フラグ & 公開日付が現在日付より過去になった場合に表示する
