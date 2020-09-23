@@ -7,6 +7,8 @@
 - https://medium.com/@kjmczk/blogsite-django-747046b453f9
 - https://stackoverflow.com/questions/22677070/additional-field-while-serializing-django-rest-framework
 - https://qiita.com/hayato1130/items/f4e84ef9ec3abb5e453c
+- https://www.django-rest-framework.org/api-guide/filtering/
+
 ```
 
 ## django setup
@@ -67,7 +69,8 @@ npm run build
 ## vue setup2
 ```
 vue add vuetify
-npm install --save axios
-npm install --save moment
+npm install axios --save 
+npm install markdown-it --save
+npm install highlight.js --save 
 npm run serve
 ```
