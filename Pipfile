@@ -13,6 +13,7 @@ djangorestframework = "==3.11.0"
 django-markdownx = "*"
 pendulum = "*"
 django-mdeditor = "*"
+markdown = "*"
 
 [requires]
 python_version = "3.8"

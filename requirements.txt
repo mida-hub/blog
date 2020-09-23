@@ -3,4 +3,5 @@ djangorestframework==3.11.0
 django-webpack-loader==0.7.0
 django-mdeditor==0.1.18
 django-environ
+markdown==3.2.2
 pendulum
