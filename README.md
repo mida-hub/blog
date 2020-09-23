@@ -4,6 +4,9 @@
 - https://qiita.com/citykong/items/bdd428dc50c8458dfd85
 - https://qiita.com/kawaMk4/items/89b18c608dc7dd2b946b
 - https://qiita.com/ryo_mt09sp/items/574bed236f3128cf97cd
+- https://medium.com/@kjmczk/blogsite-django-747046b453f9
+- https://stackoverflow.com/questions/22677070/additional-field-while-serializing-django-rest-framework
+- https://qiita.com/hayato1130/items/f4e84ef9ec3abb5e453c
 ```
 
 ## django setup

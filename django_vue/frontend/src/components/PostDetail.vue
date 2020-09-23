@@ -60,6 +60,7 @@
 </script>
 
 <style scoped>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/a11y-dark.min.css">
   .detail-right{
     text-align: right;
   }

@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
-from markdownx.models import MarkdownxField
+from mdeditor.fields import MDTextField
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -25,7 +26,7 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, blank=True)
     title = models.CharField(max_length=255)
     # content = models.TextField()
-    content = MarkdownxField()
+    content = MDTextField()
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

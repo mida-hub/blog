@@ -12,6 +12,7 @@ django-webpack-loader = "*"
 djangorestframework = "==3.11.0"
 django-markdownx = "*"
 pendulum = "*"
+django-mdeditor = "*"
 
 [requires]
 python_version = "3.8"
