@@ -9,7 +9,7 @@
                 v-bind:to="{name: 'postDetail', params: {postId: post.id}}"
                 class="post-link"
               >
-                {{ post.title }}  
+                {{ post.with_prefix_title }}  
               </router-link>
             </span>
           </v-card-title>
@@ -42,15 +42,36 @@
         postList: []
       }
     },
-    created: function () {
-      console.log('post mounted')
-      axios.get('/blog-api/posts/')
+    methods: {
+      getEndpoint: function (tagId) {
+        if( tagId === undefined){
+          return '/blog-api/posts/'
+        } else {
+          return '/blog-api/tags/' + tagId + '/'
+        } 
+      },
+      getPostList: function (tagId) {
+        const endpoint = this.getEndpoint(tagId)
+        console.log('post mounted')
+        console.log(endpoint)
+        axios.get(endpoint)
         .then((response) => {
           this.postList = response.data
         })
         .catch((error) => {
           console.log(error)
         })
+      }
+    },
+    created: function () {
+      const tagId = this.$route.params.tagId
+      this.getPostList(tagId)
+    },
+    watch: {
+      $route (to) {
+        const tagId = to.params.tagId
+        this.getPostList(tagId)
+      }
     }
   }
 </script>

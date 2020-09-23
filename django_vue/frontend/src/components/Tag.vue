@@ -1,7 +1,7 @@
 <template>
   <v-chip-group column>
     <v-card-text>
-      <v-chip v-for="tag in tagList" v-bind:key="tag.id">
+      <v-chip label @click="tagFilter(tag.id)" v-for="tag in tagList" v-bind:key="tag.id">
         {{ tag.name }}
       </v-chip>
     </v-card-text>
@@ -27,6 +27,17 @@
           console.log(error)
         })
     },
+    methods: {
+      tagFilter: function ( tagId ) {
+        // tagId が取れて、同じ遷移先の場合は遷移しない
+        if ( Object.keys(this.$route.params).length ) {
+          if ( tagId === this.$route.params.tagId ) {
+            return
+          }
+        }
+        this.$router.push({ name: 'tagFilter', params: { tagId: tagId } })
+      }
+    }
   }
 </script>
 

@@ -24,6 +24,7 @@
         </v-card-subtitle>
         <v-card-text style="color: rgba(0, 0, 0, 0.87);">
           <span v-html="postDetail.decoded_content"></span>
+          <!-- <span v-html="compileMarkdown"></span> -->
         </v-card-text>
       </v-card>
     </v-row>
@@ -32,18 +33,29 @@
 
 <script>
   import axios from 'axios'
+  // import hljs from 'highlightjs'
+  // import markdownIt from "markdown-it"
 
   export default {
     data () {
       return {
         postDetail: [],
-        isError: false
+        isError: false,
+        // markdownIt: new markdownIt({
+        //   highlight: function(code, lang) {
+        //       return hljs.highlightAuto(code, [lang]).value;
+        //   },
+        //   html: true,
+        //   linkify: true,
+        //   breaks: true,
+        //   typographer: true
+        // })
       }
     },
     created: function () {
       console.log('post mounted')
       const postId = this.$route.params.postId
-      axios.get('/blog-api/posts/' + postId)
+      axios.get('/blog-api/posts/' + postId + '/')
         .then((response) => {
           this.postDetail = response.data
         })
@@ -55,12 +67,31 @@
             location.href = '/'
           }, 1000);
         })
+      
     },
+    // computed: {
+    //   compileMarkdown: function() {
+    //     return this.markdownIt.render(this.postDetail.decoded_content);
+    //   }  
+    // }
+    // mounted() {
+    //   let highlight = document.createElement('script')
+    //   highlight.setAttribute('src', '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js')
+    //   highlight.setAttribute('onload', 'hljs.initHighlightingOnLoad();')
+    //   document.head.appendChild(highlight)
+    // },
+    // computed: {
+    //   compiledMarkdown: function () {
+    //     // console.log(this.postDetail.decoded_content)
+    //     return this.postDetail.decoded_content
+    //   }
+    // },
   }
 </script>
 
 <style scoped>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/a11y-dark.min.css">
+  @import '../statics/dark.css';
+  
   .detail-right{
     text-align: right;
   }
