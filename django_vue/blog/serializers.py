@@ -55,7 +55,7 @@ class PostSerializer(serializers.ModelSerializer):
 
         if match_result is not None:
             # <h1>タグ & <div>タグ より前を取り出す
-            return match_result[0].replace('<h1', '').replace('<div', '')
+            return match_result[0].split('<h1')[0].split('<div')[0]
         else:
             cutLength = 80
             if len(decoded_content) > cutLength:
