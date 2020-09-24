@@ -45,9 +45,9 @@
     methods: {
       getEndpoint: function (tagId) {
         if( tagId === undefined){
-          return '/blog-api/posts/'
+          return this.$apiPath + '/posts/'
         } else {
-          return '/blog-api/tags/' + tagId + '/'
+          return this.$apiPath + '/tags/' + tagId + '/'
         } 
       },
       getPostList: function (tagId) {
