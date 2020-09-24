@@ -30,6 +30,11 @@ const routes = [
     path: '/posts/tags/:tagId/',
     name: 'tagFilter',
     component: loadView('Main')
+  },
+  {
+    path: '/auth',
+    name: 'Auth',
+    component: loadView('MainAuth')
   }
 
 ]

@@ -8,6 +8,7 @@
 - https://stackoverflow.com/questions/22677070/additional-field-while-serializing-django-rest-framework
 - https://qiita.com/hayato1130/items/f4e84ef9ec3abb5e453c
 - https://www.django-rest-framework.org/api-guide/filtering/
+- https://nmomos.com/tips/2019/07/18/django-vuejs-2/
 
 ```
 
@@ -69,6 +70,8 @@ npm run build
 ## vue setup2
 ```
 vue add vuetify
-npm install axios --save 
-  npm run serve
+npm install axios --save
+npm install vue-session --save
+npm install sweetalert2 --save
+npm run serve
 ```

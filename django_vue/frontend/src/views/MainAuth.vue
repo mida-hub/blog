@@ -4,7 +4,7 @@
       <v-col>
       </v-col>
       <v-col cols="8">
-        <PostDetail></PostDetail>
+        <Auth></Auth>
       </v-col>
       <v-col>
       </v-col>
@@ -13,11 +13,11 @@
 </template>
 
 <script>
-  import PostDetail from '@/components/PostDetail'
+  import Auth from '@/components/Auth'
 
   export default {
     components: {
-      PostDetail
+      Auth
     }
   }
 </script>

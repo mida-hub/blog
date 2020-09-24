@@ -18,15 +18,19 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('blog-auth/', obtain_jwt_token),
     path('blog-api/', include('blog.urls')),
     path('mdeditor/', include('mdeditor.urls')),
     path('', TemplateView.as_view(template_name='index.html'), name='blog'),
     path('posts/', TemplateView.as_view(template_name='index.html'), name='blog'),
     path('posts/<int:pk>/', TemplateView.as_view(template_name='index.html'), name='blog'),
+    path('posts/tags/', TemplateView.as_view(template_name='index.html'), name='blog'),
     path('posts/tags/<int>/', TemplateView.as_view(template_name='index.html'), name='blog'),
+    path('auth/', TemplateView.as_view(template_name='index.html'), name='blog'),
 ]
 
 if settings.DEBUG:

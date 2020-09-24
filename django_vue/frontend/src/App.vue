@@ -17,3 +17,11 @@ export default {
   }
 }
 </script>
+
+<style>
+@import 'statics/normalize.css';
+
+#app {
+  font-family: 'sans-serif', 'Helvetica';
+}
+</style>

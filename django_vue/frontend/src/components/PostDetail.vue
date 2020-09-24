@@ -22,6 +22,7 @@
               [{{ tag.name }}]
             </small>
           </p>
+          <v-divider/>
           </v-card-subtitle>
           <v-card-text style="color: rgba(0, 0, 0, 0.87);">
             <div v-html="postDetail.decoded_content"></div>
@@ -72,8 +73,6 @@
 </script>
 
 <style scoped>
-  /* @import '../statics/dark.css'; */
-
   .detail-right{
     text-align: right;
   }

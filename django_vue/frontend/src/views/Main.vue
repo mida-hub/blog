@@ -34,5 +34,4 @@
 </script>
 
 <style scoped>
-  @import '../statics/normalize.css';
 </style>

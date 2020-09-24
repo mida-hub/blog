@@ -10,10 +10,12 @@ django-environ = "*"
 Django = "==2.2.6"
 django-webpack-loader = "*"
 djangorestframework = "==3.11.0"
-django-markdownx = "*"
 pendulum = "*"
 django-mdeditor = "*"
 markdown = "*"
+djangorestframework-jwt = "==1.11.0"
+pyjwt = "==1.7.1"
+django-cors-headers = "==3.0.2"
 
 [requires]
 python_version = "3.8"

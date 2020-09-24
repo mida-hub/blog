@@ -27,7 +27,7 @@
             </p>
           </v-card-subtitle>
         </v-row>
-        <v-divider></v-divider>
+        <v-divider/>
       </div>
     </div>
   </v-container>
@@ -47,7 +47,7 @@
         if( tagId === undefined){
           return this.$apiPath + '/posts/'
         } else {
-          return this.$apiPath + '/posts/tags/' + tagId + '/'
+          return this.$apiPath + '/posts  /tags/' + tagId + '/'
         } 
       },
       getPostList: function (tagId) {
