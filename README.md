@@ -70,7 +70,5 @@ npm run build
 ```
 vue add vuetify
 npm install axios --save 
-npm install markdown-it --save
-npm install highlight.js --save 
-npm run serve
+  npm run serve
 ```
