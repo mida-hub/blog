@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog-api/', include('blog.urls')),
+    path('mdeditor/', include('mdeditor.urls')),
     path('', TemplateView.as_view(template_name='index.html'), name='blog'),
     path('posts/', TemplateView.as_view(template_name='index.html'), name='blog'),
     path('posts/<int:pk>/', TemplateView.as_view(template_name='index.html'), name='blog'),

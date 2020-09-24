@@ -24,7 +24,7 @@
           </p>
           </v-card-subtitle>
           <v-card-text style="color: rgba(0, 0, 0, 0.87);">
-            <span v-html="postDetail.decoded_content"></span>
+            <div v-html="postDetail.decoded_content"></div>
           </v-card-text>
         </div>
       </v-card>
@@ -72,9 +72,17 @@
 </script>
 
 <style scoped>
-  @import '../statics/dark.css';
-  
+  /* @import '../statics/dark.css'; */
+
   .detail-right{
     text-align: right;
   }
+</style>
+
+<style>
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
 </style>
