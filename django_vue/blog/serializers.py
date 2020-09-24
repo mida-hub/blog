@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Category, Tag, Post
 import markdown
 
+
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
@@ -28,7 +29,6 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class PostSerializer(serializers.ModelSerializer):
     formatted_published_at = serializers.SerializerMethodField('get_formatted_published_at')
-    summarized_content = serializers.SerializerMethodField('get_summarized_content')
     is_display = serializers.SerializerMethodField('get_is_display')
     with_prefix_title = serializers.SerializerMethodField('get_with_prefix_title')
 
@@ -36,33 +36,6 @@ class PostSerializer(serializers.ModelSerializer):
         import pendulum
         tz = pendulum.timezone('Asia/Tokyo')
         return tz.convert(obj.published_at).strftime('%Y-%m-%d %H:%M')
-
-    def _get_text_markdown(self, text):
-        md = markdown.Markdown(
-            extensions=['extra', 'admonition', 'sane_lists', 'toc'])
-        html = md.convert(text)
-        return html
-
-    """
-        コンテンツの最初の数行部分を概要して出す
-        最初に出てくる<h1>タグまでを取得する
-        出てこなければ80文字分を返す
-    """
-    def get_summarized_content(self, obj):
-        import re        
-        decoded_content = self._get_text_markdown(obj.content)
-        match_result = re.match('^(.*?)(<h1|<div)(.*?)>', decoded_content, re.S)
-
-        if match_result is not None:
-            # <h1>タグ & <div>タグ より前を取り出す
-            return match_result[0].split('<h1')[0].split('<div')[0]
-        else:
-            cutLength = 80
-            if len(decoded_content) > cutLength:
-                decoded_content = decoded_content[:cutLength]
-                decoded_content += '......'
-                return decoded_content
-            return decoded_content
 
     """
         公開日付が現在日付より過去かどうか判定する
@@ -103,7 +76,7 @@ class PostSerializer(serializers.ModelSerializer):
             'id',
             'tags',
             'with_prefix_title',
-            'summarized_content',
+            'abstract',
             'formatted_published_at',
             'is_display'
         )
@@ -113,11 +86,19 @@ class PostSerializer(serializers.ModelSerializer):
 class PostDetailSerializer(PostSerializer):
     decoded_content = serializers.SerializerMethodField('get_decoded_content')
 
+    def _get_text_markdown(self, text):
+        md = markdown.Markdown(
+            extensions=['extra', 'admonition', 'sane_lists', 'toc'])
+        html = md.convert(text)
+        return html
+
     """
         Markdown コンテンツを HTML にデコード
+        概要とコンテンツを組み合わせて返す
     """
     def get_decoded_content(self, obj):
-        return self._get_text_markdown(obj.content)
+        return obj.abstract + self._get_text_markdown(obj.content)
+
 
     class Meta:
         model = Post

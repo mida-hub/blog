@@ -25,7 +25,7 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag, blank=True)
     title = models.CharField(max_length=255)
-    # content = models.TextField()
+    abstract = models.TextField(blank=True)
     content = MDTextField()
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
