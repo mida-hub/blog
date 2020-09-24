@@ -21,11 +21,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('markdownx/', include('markdownx.urls')),
     path('blog-api/', include('blog.urls')),
     path('', TemplateView.as_view(template_name='index.html'), name='blog'),
-    path('tags/<int>/', TemplateView.as_view(template_name='index.html'), name='blog'),
+    path('posts/', TemplateView.as_view(template_name='index.html'), name='blog'),
     path('posts/<int:pk>/', TemplateView.as_view(template_name='index.html'), name='blog'),
+    path('posts/tags/<int>/', TemplateView.as_view(template_name='index.html'), name='blog'),
 ]
 
 if settings.DEBUG:

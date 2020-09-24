@@ -47,7 +47,7 @@
         if( tagId === undefined){
           return this.$apiPath + '/posts/'
         } else {
-          return this.$apiPath + '/tags/' + tagId + '/'
+          return this.$apiPath + '/posts/tags/' + tagId + '/'
         } 
       },
       getPostList: function (tagId) {

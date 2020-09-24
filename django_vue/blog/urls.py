@@ -11,5 +11,5 @@ urlpatterns = [
     path('tags/', TagListAPIView.as_view()),
     path('posts/', PostListAPIView.as_view()),
     path('posts/<int:pk>/', PostDetailAPIView.as_view()),
-    path('tags/<int:tags>/', TagFilteredPostListAPIView.as_view()),
+    path('posts/tags/<int:tags>/', TagFilteredPostListAPIView.as_view()),
 ]
