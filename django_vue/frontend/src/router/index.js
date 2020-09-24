@@ -18,15 +18,20 @@ const routes = [
     redirect: '/'
   },
   {
-    path: '/posts/tags/:tagId/',
-    name: 'tagFilter',
-    component: loadView('Main')
-  },
-  {
     path: '/posts/:postId/',
     name: 'postDetail',
     component: loadView('MainDetail')
+  },
+  {
+    path: '/posts/tags/',
+    redirect: '/'
+  },
+  {
+    path: '/posts/tags/:tagId/',
+    name: 'tagFilter',
+    component: loadView('Main')
   }
+
 ]
 
 const router = new VueRouter({
