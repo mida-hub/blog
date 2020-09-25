@@ -17,7 +17,7 @@
                 {{ postDetail.formatted_published_at }}
               </small>
             </p>
-          <p>
+          <p class="bottom-margin">
             <small v-for="tag in postDetail.tags" v-bind:key="tag.id">
               [{{ tag.name }}]
             </small>
@@ -81,6 +81,9 @@
 
   .detail-right{
     text-align: right;
+  }
+  .bottom-margin{
+    margin-bottom: 10px;
   }
 </style>
 
