@@ -59,6 +59,7 @@
         .then((response) => {
           this.postDetail = response.data
           console.log(this.token)
+          // ToDo token が有効か判定する
           if ( !this.postDetail.is_display && !this.token) {
             this.isNotDisplay = true
             // 非公開のため1秒後にリダイレクト

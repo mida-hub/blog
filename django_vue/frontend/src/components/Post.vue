@@ -67,12 +67,14 @@
     created: function () {
       const tagId = this.$route.params.tagId
       this.getPostList(tagId)
+      // ToDo token が有効か判定する
       this.token = this.$store.getters.getAuthToken
     },
     watch: {
       $route (to) {
         const tagId = to.params.tagId
         this.getPostList(tagId)
+        // ToDo token が有効か判定する
         this.token = this.$store.getters.getAuthToken
       }
     }
