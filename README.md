@@ -73,5 +73,6 @@ npm run build
 vue add vuetify
 npm install axios --save
 npm install sweetalert2 --save
+npm install markdown-it-vue
 npm run serve
 ```

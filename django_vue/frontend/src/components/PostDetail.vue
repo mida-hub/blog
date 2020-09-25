@@ -9,23 +9,21 @@
         </div>
         <div v-else>
           <v-card-title>
-            <span class="headline">{{ postDetail.title }}</span>
+            <h1>
+              {{ postDetail.title }}
+            </h1>
           </v-card-title>
-          <v-card-subtitle style="color: rgba(0, 0, 0, 0.87);">
-            <p>
-              <small>
-                {{ postDetail.formatted_published_at }}
-              </small>
+          <v-card-subtitle style="color: rgba(0, 0, 0, 0.87);">  
+            <v-chip label @click="tagFilter(tag.id)" v-for="tag in postDetail.tags" v-bind:key="tag.id">
+              {{ tag.name }}
+            </v-chip>
+            <p class="p-margin">
+              {{ postDetail.formatted_published_at }}
             </p>
-          <p class="bottom-margin">
-            <small v-for="tag in postDetail.tags" v-bind:key="tag.id">
-              [{{ tag.name }}]
-            </small>
-          </p>
-          <v-divider/>
+          <div class="divider"></div>
           </v-card-subtitle>
-          <v-card-text style="color: rgba(0, 0, 0, 0.87);">
-            <div v-html="postDetail.decoded_content"></div>
+          <v-card-text>
+            <markdown-it-vue class="md-body" :content="markdownText" />
           </v-card-text>
         </div>
       </v-card>
@@ -35,11 +33,17 @@
 
 <script>
   import axios from 'axios'
+  import MarkdownItVue from 'markdown-it-vue'
+  import 'markdown-it-vue/dist/markdown-it-vue.css'
 
   export default {
+    components: {
+      MarkdownItVue
+    },
     data () {
       return {
         postDetail: [],
+        markdownText: '',
         isNotDisplay: false,
         token: null
       }
@@ -49,6 +53,9 @@
         setTimeout(function () {
               location.href = '/'
             }, 1000);
+      },
+      tagFilter: function ( tagId ) {
+        this.$router.push({ name: 'tagFilter', params: { tagId: tagId } })
       }
     },
     created: function () {
@@ -58,6 +65,7 @@
       axios.get(this.$apiPath + '/posts/' + postId + '/')
         .then((response) => {
           this.postDetail = response.data
+          this.markdownText = this.postDetail.abstract_content
           console.log(this.token)
           // ToDo token が有効か判定する
           if ( !this.postDetail.is_display && !this.token) {
@@ -77,13 +85,15 @@
 </script>
 
 <style scoped>
-  /* @import '../statics/dark.css'; */
-
   .detail-right{
     text-align: right;
   }
-  .bottom-margin{
-    margin-bottom: 10px;
+  .p-margin{
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+  .divider{
+    border-bottom: 1px solid;
   }
 </style>
 

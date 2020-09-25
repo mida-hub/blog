@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Category, Tag, Post
-import markdown
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -84,20 +83,13 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 class PostDetailSerializer(PostSerializer):
-    decoded_content = serializers.SerializerMethodField('get_decoded_content')
-
-    def _get_text_markdown(self, text):
-        md = markdown.Markdown(
-            extensions=['extra', 'admonition', 'sane_lists', 'toc'])
-        html = md.convert(text)
-        return html
+    abstract_content = serializers.SerializerMethodField('get_abstract_content')
 
     """
-        Markdown コンテンツを HTML にデコード
         概要とコンテンツを組み合わせて返す
     """
-    def get_decoded_content(self, obj):
-        return obj.abstract + self._get_text_markdown(obj.content)
+    def get_abstract_content(self, obj):
+        return obj.abstract + '\n' + obj.content
 
 
     class Meta:
@@ -107,8 +99,7 @@ class PostDetailSerializer(PostSerializer):
             'id',
             'tags',
             'title',
-            'content',
-            'decoded_content',
+            'abstract_content',
             'formatted_published_at',
             'is_display'
         )
