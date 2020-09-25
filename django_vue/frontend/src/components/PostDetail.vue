@@ -13,10 +13,12 @@
               {{ postDetail.title }}
             </h1>
           </v-card-title>
-          <v-card-subtitle style="color: rgba(0, 0, 0, 0.87);">  
-            <v-chip label @click="tagFilter(tag.id)" v-for="tag in postDetail.tags" v-bind:key="tag.id">
-              {{ tag.name }}
-            </v-chip>
+          <v-card-subtitle style="color: rgba(0, 0, 0, 0.87);">
+            <v-chip-group column>
+              <v-chip label @click="tagFilter(tag.id)" v-for="tag in postDetail.tags" v-bind:key="tag.id">
+                {{ tag.name }}
+              </v-chip>
+            </v-chip-group>
             <p class="p-margin">
               {{ postDetail.formatted_published_at }}
             </p>
