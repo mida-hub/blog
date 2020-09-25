@@ -11,7 +11,7 @@
               とまとエンジニア日記
             </router-link>
             <v-img class="blog-title-img"
-              v-bind:src="require('@/assets/tomato.jpg')"
+              v-bind:src="require('@/assets/tomato.png')"
             ></v-img>
           </h1>
         </div>
