@@ -9,7 +9,18 @@
             indeterminate
             />
         </div>
+        <div v-else-if="token">
+          <div class="text-center">
+            <v-btn 
+              depressed
+              class="pink white--text"
+              @click="logout">
+              Logout
+            </v-btn>
+          </div>
+        </div>
         <div v-else>
+          {{ token }}
           <v-form ref="form" v-model="valid" lazy-validation>
             <v-text-field
               v-model="credentials.username"
@@ -47,7 +58,6 @@
 </template>
 
 <script>
-  import axios from 'axios';
   import Swal from 'sweetalert2';
 
   export default {
@@ -56,6 +66,7 @@
       credentials: {},
       valid: true,
       loading: false,
+      token: null,
       rules: {
         username: [
           v => !!v || "ユーザー名は必須です"
@@ -68,13 +79,12 @@
     methods: {
       login() {
         if (this.$refs.form.validate()) {
-          this.loading = true;
-          axios.post('/blog-auth/', this.credentials)
-          .then(res => {
-            this.$session.start();
-            this.$session.set('token', res.data.token);
-            this.$router.push('/');
-          }).catch((error) => {
+          this.loading = true
+          this.$store.dispatch('login', this.credentials)
+          .then(() => {
+            this.token = this.$store.getters.getAuthToken
+          })
+          .catch((error) => {
             console.log(error)
             Swal.fire({
               icon: 'error',
@@ -89,9 +99,15 @@
             this.loading = false;
           })
         }
+      },
+      logout() {
+        this.$store.dispatch('logout')
+        this.token = this.$store.getters.getAuthToken
       }
+    },
+    created: function () {
+      this.token = this.$store.getters.getAuthToken
     }
-
 }
 </script>
 <style scoped>

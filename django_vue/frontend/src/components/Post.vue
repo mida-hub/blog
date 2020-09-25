@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <div v-for="post in postList" v-bind:key="post.id">
-      <div v-if="post.is_display">
+      <div v-if="post.is_display || token">
         <v-row>
           <v-card-title>
             <span class="headline">
@@ -39,7 +39,8 @@
   export default {
     data () {
       return {
-        postList: []
+        postList: [],
+        token: null
       }
     },
     methods: {
@@ -47,7 +48,7 @@
         if( tagId === undefined){
           return this.$apiPath + '/posts/'
         } else {
-          return this.$apiPath + '/posts  /tags/' + tagId + '/'
+          return this.$apiPath + '/posts/tags/' + tagId + '/'
         } 
       },
       getPostList: function (tagId) {
@@ -66,11 +67,13 @@
     created: function () {
       const tagId = this.$route.params.tagId
       this.getPostList(tagId)
+      this.token = this.$store.getters.getAuthToken
     },
     watch: {
       $route (to) {
         const tagId = to.params.tagId
         this.getPostList(tagId)
+        this.token = this.$store.getters.getAuthToken
       }
     }
   }

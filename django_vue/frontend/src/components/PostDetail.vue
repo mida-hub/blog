@@ -40,7 +40,8 @@
     data () {
       return {
         postDetail: [],
-        isNotDisplay: false
+        isNotDisplay: false,
+        token: null
       }
     },
     methods: {
@@ -51,12 +52,14 @@
       }
     },
     created: function () {
+      this.token = this.$store.getters.getAuthToken
       console.log('post mounted')
       const postId = this.$route.params.postId
       axios.get(this.$apiPath + '/posts/' + postId + '/')
         .then((response) => {
           this.postDetail = response.data
-          if ( !this.postDetail.is_display ) {
+          console.log(this.token)
+          if ( !this.postDetail.is_display && !this.token) {
             this.isNotDisplay = true
             // 非公開のため1秒後にリダイレクト
             this.forceRedirect()
@@ -73,6 +76,8 @@
 </script>
 
 <style scoped>
+  /* @import '../statics/dark.css'; */
+
   .detail-right{
     text-align: right;
   }
