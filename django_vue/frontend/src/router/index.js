@@ -18,13 +18,13 @@ const routes = [
     redirect: '/'
   },
   {
+    path: '/posts/tags/',
+    redirect: '/'
+  },
+  {
     path: '/posts/:postId/',
     name: 'postDetail',
     component: loadView('MainDetail')
-  },
-  {
-    path: '/posts/tags/',
-    redirect: '/'
   },
   {
     path: '/posts/tags/:tagId/',
