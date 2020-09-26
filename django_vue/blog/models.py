@@ -43,3 +43,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class DummyAuth(models.Model):
+    is_auth = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name

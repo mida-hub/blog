@@ -1,8 +1,11 @@
-from rest_framework import generics
-from rest_framework.permissions import AllowAny
-from .models import Category, Tag, Post
-from .serializers import CategorySerializer, TagSerializer, PostSerializer, PostDetailSerializer
-from django.db.models import Q
+from rest_framework import generics, permissions
+from rest_framework.permissions import AllowAny, IsAdminUser
+from .models import Category, Tag, Post, DummyAuth
+from .serializers import CategorySerializer
+from .serializers import TagSerializer
+from .serializers import PostSerializer
+from .serializers import PostDetailSerializer
+from .serializers import DummyAuthSerializer
 
 
 class TagListAPIView(generics.ListAPIView):
@@ -35,3 +38,9 @@ class TagFilteredPostListAPIView(generics.ListAPIView):
     def get_queryset(self):
         tags = self.kwargs['tags']
         return Post.objects.filter(tags=tags)
+
+
+class DummyAuthListAPIView(generics.ListAPIView):
+    permission_classes = (IsAdminUser,)
+    serializer_class = DummyAuthSerializer
+    queryset = DummyAuth.objects.all()

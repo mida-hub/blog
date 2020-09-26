@@ -70,6 +70,22 @@
           this.markdownText = this.postDetail.abstract_content
           console.log(this.token)
           // ToDo token が有効か判定する
+          //   is_display が false のときに下記メソッドを実行して
+          //   エラーのときは token に null を強制的にセットする
+          // console.log('/dummy_auth/')
+          // axios.get(this.$apiPath + '/dummy_auth/', {
+          //   headers: {
+          //     Authorization: `JWT ${this.token}`,
+          //   }
+          // })
+          // .then((response) => {
+          //   console.log('認証')
+          //   console.log(response)
+          // })
+          // .catch((error) => {
+          //   console.log('エラー')
+          //   console.log(error)
+          // })
           if ( !this.postDetail.is_display && !this.token) {
             this.isNotDisplay = true
             // 非公開のため1秒後にリダイレクト

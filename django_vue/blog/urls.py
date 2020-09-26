@@ -4,6 +4,7 @@ from .views import TagListAPIView
 from .views import PostListAPIView
 from .views import TagFilteredPostListAPIView
 from .views import PostDetailAPIView
+from .views import DummyAuthListAPIView
 
 
 urlpatterns = [
@@ -12,4 +13,5 @@ urlpatterns = [
     path('posts/', PostListAPIView.as_view()),
     path('posts/<int:pk>/', PostDetailAPIView.as_view()),
     path('posts/tags/<int:tags>/', TagFilteredPostListAPIView.as_view()),
+    path('dummy_auth/', DummyAuthListAPIView.as_view()),
 ]

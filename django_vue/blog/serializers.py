@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, Tag, Post
+from .models import Category, Tag, Post, DummyAuth
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -102,5 +102,15 @@ class PostDetailSerializer(PostSerializer):
             'abstract_content',
             'formatted_published_at',
             'is_display'
+        )
+        read_only_fields = fields
+
+
+class DummyAuthSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DummyAuth
+        fields = (
+            'id',
+            'is_auth',
         )
         read_only_fields = fields
