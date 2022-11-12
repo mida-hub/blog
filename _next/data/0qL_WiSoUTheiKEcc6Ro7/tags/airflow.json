@@ -1,0 +1,1 @@
+{"pageProps":{"posts":[{"title":"Airflow GKEPodOperator で Service Account をどうやって指定するか","date":"2022-11-12","slug":"20221112_airflow_gkepodoperator","coverImage":"/assets/blog/20221112_airflow_gkepodoperator/airflow.png","excerpt":"GKEPodOperator で Pod を起動する際に、どうやって KSA_NAME を指定するか説明します","tags":["airflow"]}]},"__N_SSG":true}
