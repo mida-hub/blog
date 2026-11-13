@@ -1,34 +1,5 @@
-# Blog
+# tomatonic.work
 
-個人ブログ: https://tomatonic.work/
+mida's profile page.
 
-# 初期修正
-
-- .github/workflows/deploy.yml: Custom Domain の場合に CNAME の設定が必要になる
-- next.config.js
-- .env
-- public
-  - assets/author.png
-  - favicons
-  - favicon.ico
-- src
-  - components
-    - features
-      - app
-        - Header/Header.tsx
-        - Profile/Profile.tsx
-        - Seo/Seo.tsx
-      - post/Share/Share.tsx
-  - config/sns.tsx
-
-# ローカル作業
-
-```
-npm run dev
-npm run build
-```
-
-# fork 元
-
-- https://github.com/sub-t/blog-template/tree/main
-- https://zenn.dev/subt/articles/957bd5d01485e1
+Hosted on GitHub Pages with custom domain `tomatonic.work`.
